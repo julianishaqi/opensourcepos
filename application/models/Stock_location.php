@@ -75,6 +75,7 @@ class Stock_location extends CI_Model
 	{
 		$this->db->from('stock_locations');
 		$this->db->join('permissions AS permissions', 'permissions.location_id = stock_locations.location_id');
+		$this->db->where('module_id', sales);
 		$this->db->join('grants AS grants', 'grants.permission_id = permissions.permission_id');
 		$this->db->where('person_id', $this->session->userdata('person_id'));
 		$this->db->where('deleted', 0);
